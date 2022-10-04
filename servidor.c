@@ -19,14 +19,20 @@ unsigned short tracta_parametres(char buffer[]);
 
 unsigned short tracta_parametres(char buffer[]){
     unsigned char aux;
+    char nombre_1[MIDA_BUFFER], nombre_2[MIDA_BUFFER];
+
     int i,j;
     if (strstr(buffer, " ") == NULL || strstr(buffer, "\0") == NULL) { // ha de contanir espai
         printf("Format incorrecte");
         return (-1);
     }
+    /*
     char *nombres = strtok(buffer, " "); //split string, using " " separator
     char* nombre_1 = nombres;
     char* nombre_2 = strtok(NULL, " ");
+    */
+    sscanf(buffer, "%s %s", nombre_1, nombre_2);
+
     char param1 = atoi(nombre_1);
     char param2 = atoi(nombre_2);
     if (param1 >= 0 && param1 <= 99 && param2 >= 0 && param2 <= 99 ){
